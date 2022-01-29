@@ -13,6 +13,8 @@
 # Asset Store
 /[Aa]ssets/BNGFramework/
 /[Aa]ssets/Oculus/
+/[Aa]ssets/StoreModels/
+
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae1334e1a843914ea215ac160781472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxRange: 25
+  MaxRange: 100
   Damage: 25
   FiringMethod: 0
   ReloadMethod: 0

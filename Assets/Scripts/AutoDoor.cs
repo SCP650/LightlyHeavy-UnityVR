@@ -5,6 +5,7 @@ using UnityEngine;
 public class AutoDoor : MonoBehaviour
 {
     public Animator animator;
+  
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
@@ -17,6 +18,7 @@ public class AutoDoor : MonoBehaviour
         if (other.tag == "Player")
         {
             animator.SetBool("character_nearby", false);
+        
         }
     }
 }

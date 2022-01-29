@@ -38,8 +38,9 @@ public class GameManager : MonoBehaviour
     {
         if(currLevel == 0)
         {
-            TutorialSetActive(false);
+            tutorialLevel.SetActive(false);
         }
+        currLevel += 1;
         
         if (currBattleGround != null)
         {
@@ -64,12 +65,23 @@ public class GameManager : MonoBehaviour
         currTransition = nextTransition;
         preTransition = currTransition;
 
+        
+
 
     }
+     
 
-    public void TutorialSetActive(bool beActive)
+    public void ResetGame()
     {
-        tutorialLevel.SetActive(beActive);
+        Destroy(nextTransition);
+        Destroy(currBattleGround);
+        tutorialLevel.SetActive(true);
+        currLevel = 0;
+    }
+
+    public bool ShouldUnlockNextLevel()
+    {
+        return currBattleGround.GetComponent<SphereManager>().ShouldUnlockDoor();
     }
 
 }

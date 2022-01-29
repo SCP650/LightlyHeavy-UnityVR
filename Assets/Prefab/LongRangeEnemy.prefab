@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6de38f13d6b1443b2c5a5a20ac08d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 50
   SpawnOnDeath: {fileID: 0}
   ActivateGameObjectsOnDeath:
   - {fileID: 3717860060209811981}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a952a06ee9820148a44d2351b600c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: -50
+  damage: -5
   bullet: {fileID: 1999192773061084848, guid: 6b5788630a6bc4e4da4d4ad2589d9728, type: 3}
   target: {fileID: 0}
   detectRadus: 20

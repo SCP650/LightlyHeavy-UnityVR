@@ -44,11 +44,13 @@ public class PlayerManager : MonoBehaviour
     }
     private IEnumerator OnDeath()
     {
-        GameManager.i.TutorialSetActive(true);
+        GameManager.i.ResetGame();
         yield return null;
         text.text = "Another Try?";
         playerRigid.transform.position = _initialPosition;
         playerRigid.velocity = Vector3.zero;
+        currHealth = maxHealth;
+
     } 
 
     public void PushPlayer(Vector3 Direction, int force)

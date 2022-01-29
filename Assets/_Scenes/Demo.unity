@@ -406,6 +406,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1345981414}
     m_Modifications:
+    - target: {fileID: 954076348, guid: 7b417dab4f5f8fe4491d655448e45e63, type: 3}
+      propertyPath: detectRadus
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6373571114574807670, guid: 7b417dab4f5f8fe4491d655448e45e63,
         type: 3}
       propertyPath: m_Name
@@ -559,6 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9147ec42199f8141ba53fea526be480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialLevel: {fileID: 1345981413}
   currTransition: {fileID: 1580337694}
   battleGroundPrefab: {fileID: 6765431080622438667, guid: cac741318a0b3374489ca5c864249a3f,
     type: 3}
@@ -5333,18 +5338,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 98991716}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &954076348 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 954076348, guid: 7b417dab4f5f8fe4491d655448e45e63,
-    type: 3}
-  m_PrefabInstance: {fileID: 6373571113623097025}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a952a06ee9820148a44d2351b600c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &960298620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16939,6 +16932,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1345981414}
     m_Modifications:
+    - target: {fileID: 954076348, guid: 7b417dab4f5f8fe4491d655448e45e63, type: 3}
+      propertyPath: detectRadus
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6373571114574807670, guid: 7b417dab4f5f8fe4491d655448e45e63,
         type: 3}
       propertyPath: m_Name
@@ -16998,41 +16995,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373571114574807673, guid: 7b417dab4f5f8fe4491d655448e45e63,
-        type: 3}
-      propertyPath: DestroyDelay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373571114574807673, guid: 7b417dab4f5f8fe4491d655448e45e63,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373571114574807673, guid: 7b417dab4f5f8fe4491d655448e45e63,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373571114574807673, guid: 7b417dab4f5f8fe4491d655448e45e63,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 954076348}
-    - target: {fileID: 6373571114574807673, guid: 7b417dab4f5f8fe4491d655448e45e63,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373571114574807673, guid: 7b417dab4f5f8fe4491d655448e45e63,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StopAllCoroutines
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373571114574807673, guid: 7b417dab4f5f8fe4491d655448e45e63,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b417dab4f5f8fe4491d655448e45e63, type: 3}

@@ -167,7 +167,7 @@ MonoBehaviour:
   - {fileID: 6373571114574807674}
   DestroyOnDeath: 1
   DropOnDeath: 1
-  DestroyDelay: 3
+  DestroyDelay: 5
   Respawn: 0
   RespawnTime: 10
   RemoveBulletHolesOnDeath: 1
@@ -176,7 +176,18 @@ MonoBehaviour:
       m_Calls: []
   onDestroyed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 954076348}
+        m_MethodName: StopAllCoroutines
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onRespawn:
     m_PersistentCalls:
       m_Calls: []
@@ -195,7 +206,7 @@ MonoBehaviour:
   damage: -50
   bullet: {fileID: 1999192773061084848, guid: 6b5788630a6bc4e4da4d4ad2589d9728, type: 3}
   target: {fileID: 0}
-  detectRadus: 7
+  detectRadus: 20
   numBullet: 3
   source: {fileID: 7603358246050144310}
   shootSound: {fileID: 8300000, guid: 591a2c55f8ede0142b25830c33286848, type: 3}

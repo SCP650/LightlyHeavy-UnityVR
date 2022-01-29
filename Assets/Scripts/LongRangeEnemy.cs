@@ -8,15 +8,32 @@ public class LongRangeEnemy : Agent
     public AudioSource source;
     public AudioClip shootSound;
     public AudioClip detectSound;
+   
 
-    
+    private int level;
+    private int consecuShots;
+    private float coolDownTime;
+
+    private void Start()
+    {
+        level = GameManager.i.currLevel;
+        damage = damage - level; //increase damange linearlly 
+        consecuShots = level * 2+1;
+        coolDownTime = 3 - level * 0.5f;
+  
+
+    }
     public override IEnumerator StartAttack()
     {
     
         while (true)
         {
-            Attack();
-            yield return new WaitForSeconds(3);
+            for(int i =0; i < consecuShots; i++)
+            {
+                Attack();
+            }
+            
+            yield return new WaitForSeconds(coolDownTime >= 1 ? coolDownTime : 1);
         }
     }
     public override void OnDetectPlayer()

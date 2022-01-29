@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //public GameObject tutorialLevel;
+    public GameObject tutorialLevel;
     public GameObject currTransition;
     public GameObject battleGroundPrefab;    //
     public GameObject transitionPrefab; //
@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextBattle()
     {
+        if(currLevel == 0)
+        {
+            TutorialSetActive(false);
+        }
         
         if (currBattleGround != null)
         {
@@ -61,6 +65,11 @@ public class GameManager : MonoBehaviour
         preTransition = currTransition;
 
 
+    }
+
+    public void TutorialSetActive(bool beActive)
+    {
+        tutorialLevel.SetActive(beActive);
     }
 
 }

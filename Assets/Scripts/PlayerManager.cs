@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour
     }
     private IEnumerator OnDeath()
     {
+        GameManager.i.TutorialSetActive(true);
         yield return null;
         text.text = "Another Try?";
         playerRigid.transform.position = _initialPosition;

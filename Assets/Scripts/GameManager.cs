@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager i;
 
     public int currLevel = 0;
+    public bool isTesting = false;
     private GameObject currBattleGround;
     private Vector3 battleOffset = new Vector3(-7.93f, -0.27f, -62.23f);
     private Vector3 transitOffset = new Vector3(-4.13f, -0.11f, -102.52f);
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         if(i != null && i != this)
         {
+            Debug.LogError("More Game Mamager!!");
             Destroy(this);
         }
         else
@@ -62,8 +64,9 @@ public class GameManager : MonoBehaviour
         nextTransition = Instantiate(transitionPrefab);
         nextTransition.transform.position = transitOffset;
 
-        currTransition = nextTransition;
         preTransition = currTransition;
+        currTransition = nextTransition;
+        
 
         
 
@@ -81,6 +84,10 @@ public class GameManager : MonoBehaviour
 
     public bool ShouldUnlockNextLevel()
     {
+        if (isTesting)
+        {
+            return true;
+        }
         return currBattleGround.GetComponent<SphereManager>().ShouldUnlockDoor();
     }
 

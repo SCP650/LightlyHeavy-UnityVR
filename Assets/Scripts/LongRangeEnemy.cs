@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BNG;
 
 public class LongRangeEnemy : Agent
 {
@@ -20,7 +21,7 @@ public class LongRangeEnemy : Agent
         damage = damage - level; //increase damange linearlly 
         consecuShots = level * 2+1;
         coolDownTime = 3 - level * 0.5f;
-  
+        GetComponent<Damageable>().onDestroyed.AddListener(StopAllCoroutines);
 
     }
     public override IEnumerator StartAttack()
@@ -31,6 +32,7 @@ public class LongRangeEnemy : Agent
             for(int i =0; i < consecuShots; i++)
             {
                 Attack();
+                yield return new WaitForSeconds(0.5f);
             }
             
             yield return new WaitForSeconds(coolDownTime >= 1 ? coolDownTime : 1);

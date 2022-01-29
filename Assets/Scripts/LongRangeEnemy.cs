@@ -5,10 +5,12 @@ using UnityEngine;
 public class LongRangeEnemy : Agent
 {
     public int numBullet = 3;
+   
 
     
     public override IEnumerator StartAttack()
     {
+    
         while (true)
         {
             Attack();
@@ -20,7 +22,7 @@ public class LongRangeEnemy : Agent
     public override void Attack()
     {
         GameObject shot =  Instantiate(bullet);
-        shot.transform.position = transform.position;
+        shot.transform.position = transform.position + transform.forward;
         EnemyBullet bul = shot.GetComponent<EnemyBullet>();
         bul.damage = damage;
         bul.direction =  PlayerManager.i.playerHead.position - transform.position;
@@ -28,4 +30,11 @@ public class LongRangeEnemy : Agent
 
     }
 
+
+    void OnDrawGizmos()
+    {
+         
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position,detectRadus);
+    }
 }

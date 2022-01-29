@@ -14,6 +14,7 @@ public class EnemyBullet : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         rigid.velocity = speed * direction;
+        StartCoroutine(PrepToDie());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -25,6 +26,12 @@ public class EnemyBullet : MonoBehaviour
             PlayerManager.i.TakeDamage(damage);
             PlayerManager.i.PushPlayer(-direction, damage);
         }
+    }
+
+    private IEnumerator PrepToDie()
+    {
+        yield return new WaitForSeconds(60);
+        Destroy(this);
     }
 
 }

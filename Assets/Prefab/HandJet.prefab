@@ -5253,7 +5253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HapticsOnValidPickup: 1
   HapticsOnValidRemotePickup: 1
-  HapticsOnCollision: 1
+  HapticsOnCollision: 0
   HapticsOnGrab: 1
   VibrateFrequency: 0.3
   VibrateAmplitude: 0.1
@@ -5346,7 +5346,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f1b421362f6dab94ead65ca98c6043fd, type: 2}
+  - {fileID: 2100000, guid: e3444642a1d1346ba8683c66e1272378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

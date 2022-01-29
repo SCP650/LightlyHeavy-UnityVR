@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager i;
@@ -10,7 +10,9 @@ public class PlayerManager : MonoBehaviour
     public Transform playerHead;
     public int maxHealth = 100;
     public int currHealth;
- 
+    public Text text;
+
+    private Vector3 _initialPosition;
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class PlayerManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         currHealth = maxHealth;
         playerRigid = player.GetComponent<Rigidbody>();
+        _initialPosition = playerRigid.transform.position;
     }
 
     public void TakeDamage(int damage)
@@ -42,6 +45,9 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator OnDeath()
     {
         yield return null;
+        text.text = "Another Try?";
+        playerRigid.transform.position = _initialPosition;
+        playerRigid.velocity = Vector3.zero;
     } 
 
     public void PushPlayer(Vector3 Direction, int force)

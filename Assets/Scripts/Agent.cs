@@ -19,15 +19,26 @@ public class Agent : MonoBehaviour
 
     private void Update()
     {
-        if( !detected && Vector3.Distance( PlayerManager.i.playerHead.position, transform.position) < detectRadus)
+        if( Vector3.Distance( PlayerManager.i.playerHead.position, transform.position) < detectRadus)
         {
-            Debug.Log("detected");
-            detected = true;
-            OnDetectPlayer();
-        }else if (detected)
-        {
-            transform.LookAt(PlayerManager.i.playerHead);
+            if (detected)
+            {
+                transform.LookAt(PlayerManager.i.playerHead);
+            }else
+            {
+                detected = true;
+                OnDetectPlayer();
+            }
+         
+           
         }
+        else
+        {
+            detected = false;
+            StopAllCoroutines();
+        }
+        
+       
         
     }
 

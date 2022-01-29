@@ -6,6 +6,8 @@ public class LongRangeEnemy : Agent
 {
     public int numBullet = 3;
     public AudioSource source;
+    public AudioClip shootSound;
+    public AudioClip detectSound;
 
     
     public override IEnumerator StartAttack()
@@ -19,7 +21,7 @@ public class LongRangeEnemy : Agent
     }
     public override void OnDetectPlayer()
     {
-        source.Play();
+        source.PlayOneShot(detectSound);
         base.OnDetectPlayer();
         
     }
@@ -28,6 +30,7 @@ public class LongRangeEnemy : Agent
     public override void Attack()
     {
         GameObject shot =  Instantiate(bullet);
+        source.PlayOneShot(shootSound);
         shot.transform.position = transform.position + transform.forward;
         EnemyBullet bul = shot.GetComponent<EnemyBullet>();
         bul.damage = damage;

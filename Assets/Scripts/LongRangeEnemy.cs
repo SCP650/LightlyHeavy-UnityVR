@@ -5,7 +5,7 @@ using UnityEngine;
 public class LongRangeEnemy : Agent
 {
     public int numBullet = 3;
-   
+    public AudioSource source;
 
     
     public override IEnumerator StartAttack()
@@ -17,7 +17,13 @@ public class LongRangeEnemy : Agent
             yield return new WaitForSeconds(3);
         }
     }
-    
+    public override void OnDetectPlayer()
+    {
+        source.Play();
+        base.OnDetectPlayer();
+        
+    }
+
 
     public override void Attack()
     {

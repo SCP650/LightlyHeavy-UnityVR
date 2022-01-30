@@ -3,42 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using BNG;
 
-public class LongRangeEnemy : Agent
+public class ExplodeEnemy : Agent
 {
-    public int numBullet = 3;
+ 
     public AudioSource source;
-    public AudioClip shootSound;
+    public AudioClip explodeSound;
     public AudioClip detectSound;
    
 
     private int level;
-    private int consecuShots;
-    private float coolDownTime;
+    private int force;
     private Rigidbody rigidbody;
+    private int explodeRadius;
 
     private void Start()
     {
         level = GameManager.i.currLevel;
         damage = damage - level; //increase damange linearlly 
-        consecuShots = level * 2+1;
-        coolDownTime = 3 - level * 0.5f;
+        force = level * 5 +25; 
         GetComponent<Damageable>().onDestroyed.AddListener(StopAllCoroutines);
         rigidbody = GetComponent<Rigidbody>();
         Detected = false;
-
+        explodeRadius = level * 2 + 3;
+        detectRadus = detectRadus + level * 3;
     }
     public override IEnumerator StartAttack()
     {
     
         while (true)
         {
-            for(int i =0; i < consecuShots; i++)
+            if (Vector3.Distance(PlayerManager.i.playerHead.position, transform.position) < explodeRadius)
             {
-                Attack();
-                yield return new WaitForSeconds(0.5f);
+                source.PlayOneShot(explodeSound);
+                PlayerManager.i.TakeDamage(damage);
+                GetComponent<Damageable>().DestroyThis();
             }
-            
-            yield return new WaitForSeconds(coolDownTime >= 1 ? coolDownTime : 1);
+            yield return null;
         }
     }
     public override void OnDetectPlayer()
@@ -49,25 +49,13 @@ public class LongRangeEnemy : Agent
     }
 
 
-    public override void Attack()
-    {
-        GameObject shot =  Instantiate(bullet);
-        source.PlayOneShot(shootSound);
-        shot.transform.position = transform.position + transform.forward;
-        EnemyBullet bul = shot.GetComponent<EnemyBullet>();
-        bul.damage = damage;
-        bul.direction =  PlayerManager.i.playerHead.position - transform.position;
-        bul.speed = 1;
-
-    }
     public override IEnumerator CloseIn()
     {
         while (true)
         {
-        
-            rigidbody.AddForce((PlayerManager.i.playerHead.position - transform.position) * 20, ForceMode.Force);
-
-            yield return new WaitForSeconds(Random.Range(3, 5));
+             
+            rigidbody.AddRelativeForce(Vector3.forward * force, ForceMode.Force);
+            yield return null;
         }
     }
 

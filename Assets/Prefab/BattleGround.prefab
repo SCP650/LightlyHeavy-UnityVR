@@ -217,6 +217,7 @@ MonoBehaviour:
   - {fileID: 140612, guid: 9d79238e340446545b920b58f2cd9574, type: 3}
   enemy:
   - {fileID: 6373571114574807670, guid: 7b417dab4f5f8fe4491d655448e45e63, type: 3}
+  - {fileID: 6373571114574807670, guid: c4eaa83376690db4d967b754cd6086a7, type: 3}
   sphereOrig: {x: -7.93, y: -0.27, z: -62.23}
   text: {fileID: 2417055493880426477}
 --- !u!1001 &6765431082247340997

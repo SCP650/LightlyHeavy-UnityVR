@@ -19,7 +19,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit");
+       
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Hit Player");

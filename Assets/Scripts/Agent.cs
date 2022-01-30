@@ -6,8 +6,7 @@ public class Agent : MonoBehaviour
 {
     public int damage = -5;
     public GameObject bullet; //for enemy 
-    public Transform target; //for enemy
-    public int detectRadus = 5;
+    public int detectRadus = 20;
 
     private Coroutine attack;
     private Coroutine patrol;

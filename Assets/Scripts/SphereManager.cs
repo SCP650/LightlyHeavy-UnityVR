@@ -13,9 +13,10 @@ public class SphereManager : MonoBehaviour
 
     private int numEnemy;
     private int numAlive;
+    private int level;
     private void Start()
     {
-       
+        level = GameManager.i.currLevel;
         numEnemy = GameManager.i.currLevel * 2 + 5;
         numAlive = numEnemy;
         StartCoroutine(Spawn());
@@ -23,13 +24,22 @@ public class SphereManager : MonoBehaviour
     }
     private IEnumerator Spawn()
     {
-        for(int i = 0; i < numEnemy; i++)
+        for (int i = 0; i < numEnemy; i++)
         {
-            GameObject e = Instantiate(enemy[0]);
+            GameObject e;
+            if (i < level)
+            {
+                 e = Instantiate(enemy[1]);//explode
+            }
+            else
+            {
+          
+                 e = Instantiate(enemy[0]);//Range
+            }
+
             e.transform.position = Random.insideUnitSphere * 35 + sphereOrig;
             e.transform.parent = transform;
             e.GetComponent<Damageable>().onDestroyed.AddListener(DecreaseCount);
-
             SpawnObject();
             SpawnObject();
 
@@ -76,8 +86,8 @@ public class SphereManager : MonoBehaviour
         {
             if (!GameManager.i.isTesting)
             {
-                freq = Random.Range(5, 50 - 2* GameManager.i.currLevel);
-                freq = Random.Range(15, 100 - 2 * GameManager.i.currLevel);
+                freq = Random.Range(5, 50 - 2* level);
+                freq = Random.Range(15, 100 - 2 * level);
             }
             yield return new WaitForSeconds(freq);
             GameManager.i.ChangeGravity();

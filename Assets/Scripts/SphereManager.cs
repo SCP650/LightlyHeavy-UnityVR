@@ -86,8 +86,8 @@ public class SphereManager : MonoBehaviour
         {
             if (!GameManager.i.isTesting)
             {
-                freq = Random.Range(5, 50 - 2* level);
-                freq = Random.Range(15, 100 - 2 * level);
+                freq = Random.Range(Mathf.Max( 30-2*level,2), Mathf.Max(31, 50 -  level));
+                dura = Random.Range(2, 5);
             }
             yield return new WaitForSeconds(freq);
             GameManager.i.ChangeGravity();

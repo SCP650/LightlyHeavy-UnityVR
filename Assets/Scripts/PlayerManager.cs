@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using BNG;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager i;
@@ -11,6 +12,12 @@ public class PlayerManager : MonoBehaviour
     public int maxHealth = 100;
     public int currHealth;
     public Text text;
+    public AudioSource audio;
+    public AudioClip hurtSound;
+
+    public float VibrateFrequency = 0.3f;
+    public float VibrateAmplitude = 1f;
+    public float VibrateDuration = 0.2f;
 
     private Vector3 _initialPosition;
 
@@ -37,7 +44,10 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currHealth += damage;
-        if(currHealth <=0)
+        audio.PlayOneShot(hurtSound);
+        InputBridge.Instance.VibrateController(VibrateFrequency, VibrateAmplitude, VibrateDuration,0);
+        InputBridge.Instance.VibrateController(VibrateFrequency, VibrateAmplitude, VibrateDuration, ControllerHand.Right);
+        if (currHealth <=0)
         {
             StartCoroutine(OnDeath());
         }

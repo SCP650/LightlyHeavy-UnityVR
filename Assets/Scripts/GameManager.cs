@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
     public void ChangeGravity()
     {
         hasGravity = true;
-        Physics.gravity = new Vector3(Random.value * 15-10, Random.value * 15-10, Random.value * 15-10);
+        Physics.gravity = new Vector3(Random.value, Random.value, Random.value )* 10 - new Vector3(5,5,5);
     
         onChangeGravity.Invoke();
     }

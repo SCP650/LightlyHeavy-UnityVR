@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public int currHealth;
     public Text text;
     public AudioSource audio;
+    public AudioSource bgmAudio;
     public AudioClip hurtSound;
 
     public float VibrateFrequency = 0.3f;
@@ -20,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     public float VibrateDuration = 0.2f;
 
     private Vector3 _initialPosition;
+    private AudioClip bgm;
 
     private void Awake()
     {
@@ -39,6 +41,7 @@ public class PlayerManager : MonoBehaviour
         currHealth = maxHealth;
         playerRigid = player.GetComponent<Rigidbody>();
         _initialPosition = playerRigid.transform.position;
+        bgm = Resources.Load("Space_Jam") as AudioClip;
     }
 
     public void TakeDamage(int damage)
@@ -67,4 +70,13 @@ public class PlayerManager : MonoBehaviour
     {
         playerRigid.AddForce(Direction * force, ForceMode.Impulse);
     }
+    public void PlayMusic() {
+        bgmAudio.clip = bgm;
+        bgmAudio.Play();
+    }
+    public void StopMusic()
+    {
+        bgmAudio.Stop();
+    }
+
 }

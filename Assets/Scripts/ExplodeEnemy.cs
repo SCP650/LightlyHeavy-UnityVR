@@ -14,7 +14,7 @@ public class ExplodeEnemy : Agent
     private int level;
     private int force;
     private Rigidbody rigidbody;
-    private int explodeRadius;
+    private float explodeRadius;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class ExplodeEnemy : Agent
         GetComponent<Damageable>().onDestroyed.AddListener(StopAllCoroutines);
         rigidbody = GetComponent<Rigidbody>();
         Detected = false;
-        explodeRadius = level * 2 + 3;
+        explodeRadius = level/2.0f + 2;
         detectRadus = detectRadus + level * 3;
     }
     public override IEnumerator StartAttack()

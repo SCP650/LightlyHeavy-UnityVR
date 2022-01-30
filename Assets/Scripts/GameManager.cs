@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         if(currLevel == 0)
         {
             tutorialLevel.SetActive(false);
+            PlayerManager.i.PlayMusic();
         }
         currLevel += 1;
         
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
         Destroy(currBattleGround);
         tutorialLevel.SetActive(true);
         currLevel = 0;
+        PlayerManager.i.StopMusic();
         onResetGame.Invoke();
     }
 

@@ -64,15 +64,19 @@ public class SphereManager : MonoBehaviour
         {
             text.text = "Next Level Unlocked, I Expect You to Die.";
         }
-        else
+        else if(numAlive >= 0)
         {
             text.text = $"{numAlive} Enemies Left";
+        }
+        else
+        {
+            text.text = $"0 Enemies Left";
         }
         
     }
     public bool ShouldUnlockDoor()
     { 
-        return numAlive == 0;
+        return numAlive <= 0;
     }
 
     private IEnumerator ChangeGravity()

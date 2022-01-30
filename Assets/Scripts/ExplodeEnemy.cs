@@ -70,6 +70,10 @@ public class ExplodeEnemy : Agent
         }
     }
 
+    public override void OnDie()
+    {
+        GetComponent<Damageable>().DestroyThis();
+    }
 
     void OnDrawGizmos()
     {

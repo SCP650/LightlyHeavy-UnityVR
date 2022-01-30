@@ -82,7 +82,10 @@ public class LongRangeEnemy : Agent
         }
     }
 
-
+    public override void OnDie()
+    {
+        GetComponent<Damageable>().DestroyThis();
+    }
     void OnDrawGizmos()
     {
          

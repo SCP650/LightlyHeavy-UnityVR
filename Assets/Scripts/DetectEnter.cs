@@ -5,6 +5,8 @@ using UnityEngine;
 public class DetectEnter : MonoBehaviour
 {
     private bool hasEntered = false;
+   
+     
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player" && !hasEntered)

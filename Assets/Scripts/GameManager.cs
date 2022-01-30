@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject transitionPrefab; //
     public static GameManager i;
     public UnityEvent onChangeGravity;
+    public UnityEvent onResetGame;
     public bool hasGravity = false;
 
     public int currLevel = 0;
@@ -79,15 +80,17 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        Destroy(nextTransition);
+        Destroy(preTransition);
+        currTransition.transform.position = origPosition;
         Destroy(currBattleGround);
         tutorialLevel.SetActive(true);
         currLevel = 0;
+        onResetGame.Invoke();
     }
 
     public bool ShouldUnlockNextLevel()
     {
-        if (isTesting)
+        if (isTesting || currLevel == 0)
         {
             return true;
         }

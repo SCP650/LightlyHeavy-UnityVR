@@ -572,6 +572,9 @@ MonoBehaviour:
   onChangeGravity:
     m_PersistentCalls:
       m_Calls: []
+  onResetGame:
+    m_PersistentCalls:
+      m_Calls: []
   hasGravity: 0
   currLevel: 0
   isTesting: 0

@@ -9,12 +9,17 @@ public class UpdateLevelUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text.text = $"Level: {GameManager.i.currLevel}";
+       
+        GameManager.i.onResetGame.AddListener(updateText);
+        updateText();
+    }
+    private void OnDestroy()
+    {
+        GameManager.i.onResetGame.RemoveListener(updateText);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void updateText()
     {
-        
+        text.text = $"Level: {GameManager.i.currLevel}";
     }
 }

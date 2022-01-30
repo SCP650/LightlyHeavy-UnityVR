@@ -11,9 +11,9 @@ public class Agent : MonoBehaviour
     private Coroutine attack;
     private Coroutine patrol;
     private Coroutine closein;
+ 
 
     private bool detected;
-
     public bool Detected { get { return detected; }
         set
         {
@@ -33,7 +33,8 @@ public class Agent : MonoBehaviour
 
     private void Update()
     {
-        if( Vector3.Distance( PlayerManager.i.playerHead.position, transform.position) < detectRadus)
+        float dist = Vector3.Distance(PlayerManager.i.playerHead.position, transform.position);
+        if (dist < detectRadus)
         {
             if (Detected)
             {
@@ -44,6 +45,9 @@ public class Agent : MonoBehaviour
             }
          
            
+        }else if (dist > 500)
+        {
+            OnDie();
         }
         else
         {
@@ -97,5 +101,9 @@ public class Agent : MonoBehaviour
         Instantiate(bullet, gameObject.transform);
     }
 
+    public virtual void OnDie()
+    {
+
+    }
 
 }

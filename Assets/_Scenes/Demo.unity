@@ -631,7 +631,7 @@ MonoBehaviour:
   currHealth: 0
   text: {fileID: 1524730595}
   audio: {fileID: 3334148279851856010}
-  hurtSound: {fileID: 8300000, guid: 7cd2ac43860fc674b8bb9322245d2a0b, type: 3}
+  hurtSound: {fileID: 8300000, guid: a3cf3adcc27b0f74ea22a280a9a841c0, type: 3}
   VibrateFrequency: 0.3
   VibrateAmplitude: 1
   VibrateDuration: 0.2

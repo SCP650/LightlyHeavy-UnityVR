@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject battleGroundPrefab;    //
     public GameObject transitionPrefab; //
     public static GameManager i;
+    public UnityEvent onChangeGravity;
+    public bool hasGravity = false;
 
     public int currLevel = 0;
     public bool isTesting = false;
@@ -64,7 +67,7 @@ public class GameManager : MonoBehaviour
         nextTransition = Instantiate(transitionPrefab);
         nextTransition.transform.position = transitOffset;
 
-        preTransition = currTransition;
+        preTransition = currTransition; 
         currTransition = nextTransition;
         
 
@@ -91,4 +94,18 @@ public class GameManager : MonoBehaviour
         return currBattleGround.GetComponent<SphereManager>().ShouldUnlockDoor();
     }
 
+    public void ChangeGravity()
+    {
+        hasGravity = true;
+        Physics.gravity = new Vector3(Random.value * 100+5, Random.value * 100+5, Random.value * 100+5);
+        Debug.Log(Physics.gravity);
+        onChangeGravity.Invoke();
+    }
+
+    public void ResetGravity()
+    {
+        hasGravity = false;
+        Physics.gravity = Vector3.zero;
+        onChangeGravity.Invoke();
+    }
 }

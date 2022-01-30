@@ -19,7 +19,7 @@ public class SphereManager : MonoBehaviour
         numEnemy = GameManager.i.currLevel * 2 + 5;
         numAlive = numEnemy;
         StartCoroutine(Spawn());
-
+        StartCoroutine(ChangeGravity());
     }
     private IEnumerator Spawn()
     {
@@ -57,5 +57,26 @@ public class SphereManager : MonoBehaviour
     public bool ShouldUnlockDoor()
     { 
         return numAlive == 0;
+    }
+
+    private IEnumerator ChangeGravity()
+    {
+        int freq = 10;
+        int dura = 10;
+       
+        
+
+        while (true)
+        {
+            if (!GameManager.i.isTesting)
+            {
+                freq = Random.Range(5, 50 - 2* GameManager.i.currLevel);
+                freq = Random.Range(15, 100 - 2 * GameManager.i.currLevel);
+            }
+            yield return new WaitForSeconds(freq);
+            GameManager.i.ChangeGravity();
+            yield return new WaitForSeconds(dura);
+            GameManager.i.ResetGravity();
+        }
     }
 }

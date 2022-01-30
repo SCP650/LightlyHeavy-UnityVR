@@ -208,13 +208,13 @@ MonoBehaviour:
   stuff:
   - {fileID: 139814, guid: 74f8de2ddfdb61644af2f84484b176a0, type: 3}
   - {fileID: 195630, guid: 857b9bcf7311f5a49b829c4fd3cc791f, type: 3}
-  - {fileID: 156656, guid: bddb1706eb9e38c4c8aad9e975af8fba, type: 3}
-  - {fileID: 136794, guid: df1cac3988f7cf841b2b0afc88ea5e26, type: 3}
-  - {fileID: 160714, guid: 570e2548a8f74734e8a712c7c4f6ab0c, type: 3}
-  - {fileID: 140612, guid: 9d79238e340446545b920b58f2cd9574, type: 3}
   - {fileID: 155844, guid: 6456a4784f31cab439d29b7e3bb286a4, type: 3}
-  - {fileID: 190598, guid: c944460b7f1a8ef47b05ebec140bdd17, type: 3}
-  - {fileID: 178326, guid: 777d150aa6d8e1d48bcaea831bed7072, type: 3}
+  - {fileID: 195630, guid: 857b9bcf7311f5a49b829c4fd3cc791f, type: 3}
+  - {fileID: 195924, guid: 77c6276b63956c9439d917f842b9eeb0, type: 3}
+  - {fileID: 140612, guid: 9d79238e340446545b920b58f2cd9574, type: 3}
+  - {fileID: 139876, guid: 98f508b556c380a4e89204f95af2d3da, type: 3}
+  - {fileID: 195924, guid: 77c6276b63956c9439d917f842b9eeb0, type: 3}
+  - {fileID: 140612, guid: 9d79238e340446545b920b58f2cd9574, type: 3}
   enemy:
   - {fileID: 6373571114574807670, guid: 7b417dab4f5f8fe4491d655448e45e63, type: 3}
   sphereOrig: {x: -7.93, y: -0.27, z: -62.23}

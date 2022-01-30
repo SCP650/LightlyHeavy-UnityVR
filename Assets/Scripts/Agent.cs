@@ -9,47 +9,81 @@ public class Agent : MonoBehaviour
     public Transform target; //for enemy
     public int detectRadus = 5;
 
-    private bool detected = false;
+    private Coroutine attack;
+    private Coroutine patrol;
+    private Coroutine closein;
 
-    private void Start()
-    {
-       
-            
+    private bool detected;
+
+    public bool Detected { get { return detected; }
+        set
+        {
+            detected = value;
+            if (detected)
+            {
+                OnDetectPlayer();
+            }
+            else
+            {
+                OnLosePlayer();
+            }
+        }
+
     }
+    
 
     private void Update()
     {
         if( Vector3.Distance( PlayerManager.i.playerHead.position, transform.position) < detectRadus)
         {
-            if (detected)
+            if (Detected)
             {
                 transform.LookAt(PlayerManager.i.playerHead);
             }else
             {
-                detected = true;
-                OnDetectPlayer();
+                Detected = true;
             }
          
            
         }
         else
         {
-            detected = false;
-            StopAllCoroutines();
+            if (Detected)
+            {
+                Detected = false;
+            }
+            
+            
         }
         
        
         
     }
 
-    public virtual void OnDetectPlayer()
+    public virtual void OnLosePlayer()
     {
-        StartCoroutine(StartAttack());
-      
-
+        patrol =  StartCoroutine(Patrol());
+        if(attack!=null) StopCoroutine(attack);
+        if (closein != null) StopCoroutine(closein);
+        
     }
 
-   
+    public virtual void OnDetectPlayer()
+    {
+        attack = StartCoroutine(StartAttack());
+        StopCoroutine(patrol);
+        closein = StartCoroutine(CloseIn());
+
+    }
+    public virtual IEnumerator CloseIn()
+    {
+        yield return null;
+    }
+
+   public virtual IEnumerator Patrol()
+    {
+        yield return null;
+    }
 
 
     public virtual IEnumerator StartAttack()

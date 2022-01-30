@@ -19450,8 +19450,8 @@ MonoBehaviour:
   ControllerType: 1
   MovementSpeed: 1.25
   MovementForce: 1.5
-  MaxHorizontalVelocity: 5
-  MaxVerticalVelocity: 5
+  MaxHorizontalVelocity: 8
+  MaxVerticalVelocity: 8
   StepHeight: 0.18
   MaxSlopeAngle: 45
   MovementMaterial: {fileID: 13400000, guid: ed8224b07645cc54cbe10dd31aa751f8, type: 2}

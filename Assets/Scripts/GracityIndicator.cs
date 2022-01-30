@@ -6,7 +6,7 @@ public class GracityIndicator : MonoBehaviour
 {
     public Vector3 gravityDirection;
 
-
+    private bool hasGravity;
     private Quaternion _facing;
     private void Start()
     {
@@ -19,9 +19,10 @@ public class GracityIndicator : MonoBehaviour
 
     private void OnGravityUpdate()
     {
-        if(!GameManager.i.hasGravity)
+        hasGravity = GameManager.i.hasGravity;
+        if (!hasGravity)
         {
-            Debug.Log("no gravity");
+        
             GetComponent<MeshRenderer>().enabled = false;
         }
         else
@@ -35,10 +36,13 @@ public class GracityIndicator : MonoBehaviour
     private void Update()
     {
 
+        if (hasGravity)
+        {
+            var rotation = Quaternion.LookRotation(gravityDirection);
+            rotation *= _facing;
+            transform.rotation = rotation;
+        }
        
-        var rotation = Quaternion.LookRotation(gravityDirection);
-        rotation *= _facing;
-        transform.rotation = rotation;
 
     }
 }

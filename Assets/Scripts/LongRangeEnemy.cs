@@ -14,6 +14,7 @@ public class LongRangeEnemy : Agent
     private int level;
     private int consecuShots;
     private float coolDownTime;
+    private Rigidbody rigidbody;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class LongRangeEnemy : Agent
         consecuShots = level * 2+1;
         coolDownTime = 3 - level * 0.5f;
         GetComponent<Damageable>().onDestroyed.AddListener(StopAllCoroutines);
+        rigidbody = GetComponent<Rigidbody>();
+        Detected = false;
 
     }
     public override IEnumerator StartAttack()
@@ -56,6 +59,27 @@ public class LongRangeEnemy : Agent
         bul.direction =  PlayerManager.i.playerHead.position - transform.position;
         bul.speed = 1;
 
+    }
+    public override IEnumerator CloseIn()
+    {
+        while (true)
+        {
+        
+            rigidbody.AddForce((PlayerManager.i.playerHead.position - transform.position) * 50, ForceMode.Force);
+
+            yield return new WaitForSeconds(Random.Range(3, 5));
+        }
+    }
+
+    public override IEnumerator Patrol()
+    {
+        while (true)
+        {
+       
+            rigidbody.AddForce(new Vector3(Random.value * 100 -50, Random.value * 100 -50, Random.value * 100 - 50), ForceMode.Force);
+
+            yield return new WaitForSeconds(Random.Range(3, 5));
+        }
     }
 
 

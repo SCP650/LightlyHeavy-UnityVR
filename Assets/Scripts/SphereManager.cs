@@ -26,19 +26,25 @@ public class SphereManager : MonoBehaviour
         for(int i = 0; i < numEnemy; i++)
         {
             GameObject e = Instantiate(enemy[0]);
-            GameObject s = Instantiate(stuff[Random.Range(0,stuff.Length)]);
-
             e.transform.position = Random.insideUnitSphere * 35 + sphereOrig;
-            s.transform.position = Random.insideUnitSphere * 35 + sphereOrig;
-
             e.transform.parent = transform;
-            s.transform.parent = transform;
-
             e.GetComponent<Damageable>().onDestroyed.AddListener(DecreaseCount);
+
+            SpawnObject();
+            SpawnObject();
 
             yield return null;
         }
+
+
         text.text = $"{numAlive} Enemies Left";
+    }
+
+    private void SpawnObject()
+    {
+        GameObject s = Instantiate(stuff[Random.Range(0, stuff.Length)]);
+        s.transform.position = Random.insideUnitSphere * 35 + sphereOrig;
+        s.transform.parent = transform;
     }
 
     private void DecreaseCount()

@@ -60,18 +60,14 @@ public class SphereManager : MonoBehaviour
     private void DecreaseCount()
     {
         numAlive--;
-        if(numAlive == 0)
+        if(numAlive <= 0)
         {
             text.text = "Next Level Unlocked, I Expect You to Die.";
         }
-        else if(numAlive >= 0)
+        else 
         {
             text.text = $"{numAlive} Enemies Left";
-        }
-        else
-        {
-            text.text = $"0 Enemies Left";
-        }
+        } 
         
     }
     public bool ShouldUnlockDoor()
